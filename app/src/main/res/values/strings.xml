@@ -1,6 +1,8 @@
 <resources>
-    <string name="app_name">tracker</string>
-
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">CityOS tracker</string>
+    <string name="otvori_obilaske">Pregled obilazaka</string>
+    <string name="unos_obilazak">Unesi obilazak</string>
+    <string name="izmjena_obilazak">Izmjeni obilazak</string>
+    <string name="izbrisi_obilazak">Izbriši obilazak</string>
     <string name="action_settings">Settings</string>
 </resources>
