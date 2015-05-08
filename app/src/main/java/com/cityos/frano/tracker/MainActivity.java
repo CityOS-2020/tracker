@@ -1,9 +1,12 @@
 package com.cityos.frano.tracker;
 
+import android.content.Context;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -12,6 +15,15 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
+
+    public void prikazPoruka(String Poruka){
+        Context context = getApplicationContext();
+        CharSequence text = Poruka;
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
     }
 
     @Override
@@ -34,5 +46,21 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void btnPregledObilazakaClick(View view) {
+        prikazPoruka("Prikaz Obilazaka");
+    }
+
+    public void btnIzmjeniObilazakClick(View view) {
+        prikazPoruka("Izmjena Obilazaka");
+    }
+
+    public void btnUnesiObilazakClick(View view) {
+        prikazPoruka("Unos Obilaska");
+    }
+
+    public void btnIzbrisiObilazakClick(View view) {
+        prikazPoruka("Brisanje Obilazaka");
     }
 }

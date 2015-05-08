@@ -29,28 +29,40 @@
             android:layout_height="wrap_content"
             android:text="@string/otvori_obilaske"
             android:id="@+id/btnPregled"
-            android:gravity="center_vertical|center_horizontal" />
+            android:gravity="center_vertical|center_horizontal"
+            android:clickable="true"
+            android:enabled="true"
+            android:onClick="btnPregledObilazakaClick" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/unos_obilazak"
             android:id="@+id/btnUnosObilaska"
-            android:gravity="center_vertical|center_horizontal" />
+            android:gravity="center_vertical|center_horizontal"
+            android:clickable="true"
+            android:enabled="true"
+            android:onClick="btnUnesiObilazakClick"/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/izmjena_obilazak"
             android:id="@+id/btnIzmjenaObilaska"
-            android:gravity="center_vertical|center_horizontal" />
+            android:gravity="center_vertical|center_horizontal"
+            android:onClick="btnIzmjeniObilazakClick"
+            android:clickable="true"
+            android:enabled="true" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/izbrisi_obilazak"
             android:id="@+id/btnBrisiObilazak"
-            android:gravity="center_vertical|center_horizontal" />
+            android:gravity="center_vertical|center_horizontal"
+            android:clickable="true"
+            android:enabled="true"
+            android:onClick="btnIzbrisiObilazakClick" />
 
     </LinearLayout>
 </RelativeLayout>
