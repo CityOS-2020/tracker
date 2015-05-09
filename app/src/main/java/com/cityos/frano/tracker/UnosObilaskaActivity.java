@@ -123,7 +123,6 @@ public class UnosObilaskaActivity
     public String imeDatoteke(){
         String datoteka = m_op.getVrijeme();
         datoteka = datoteka.replaceAll(" ", "");
-        datoteka = datoteka.replaceAll(".", "");
         datoteka = datoteka.replaceAll(":", "");
         return datoteka + ".koo";
     }

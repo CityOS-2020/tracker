@@ -12,11 +12,13 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class PrikazObilazaka extends ListActivity {
 
-    String[] popisDatoteka = { };
+    List<String> popisDatoteka = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +30,12 @@ public class PrikazObilazaka extends ListActivity {
         lstView.setTextFilterEnabled(true);
 
         File intStorage = getFilesDir();
-        popisDatoteka = fileList();
-
+        String[] popis = fileList();
+        for(int i=0; i< popis.length; i++)
+        {
+            if (popis[i].endsWith(".koo")) // Condition to check .jpg file extension
+                popisDatoteka.add(popis[i]);
+        }
         setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, popisDatoteka));
 
     }
@@ -57,10 +63,10 @@ public class PrikazObilazaka extends ListActivity {
     }
 
     public void onListItemClick(ListView parent, View v,int position, long id){
-        Toast.makeText(this, popisDatoteka[position], Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, popisDatoteka.get(position), Toast.LENGTH_SHORT).show();
 
         Intent mapIntent = new Intent(this, MapPointActivity.class);
-        mapIntent.putExtra("ImeDatoteke", popisDatoteka[position]);
+        mapIntent.putExtra("ImeDatoteke", popisDatoteka.get(position));
         startActivity(mapIntent);
 
         Intent resultIntent = new Intent();
