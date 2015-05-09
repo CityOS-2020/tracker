@@ -25,11 +25,11 @@ public class IzmjenaObilaska extends ActionBarActivity {
         TextView tv = (TextView)findViewById(R.id.textIzmjenaVrijeme);
         tv.setText(m_op.getVrijeme());
         tv = (TextView)findViewById(R.id.textIzmjenaLongitude);
-        tv.setText("Longitude : " + m_op.getLongitude());
+        tv.setText(getString(R.string.longitude) + " : " + m_op.getLongitude());
         tv = (TextView)findViewById(R.id.textIzmjenaLatitude);
-        tv.setText("Latitude : " + m_op.getLatitude());
+        tv.setText(getString(R.string.latitude) + " : " + m_op.getLatitude());
         tv = (TextView)findViewById(R.id.textIzmjenaOpis);
-        tv.setText("Opis : " + m_op.getOpis());
+        tv.setText(m_op.getOpis());
 
     }
 
@@ -62,7 +62,7 @@ public class IzmjenaObilaska extends ActionBarActivity {
         m_op.Spremi("CityOs.ser", getApplicationContext());
 
         Intent resultIntent = new Intent();
-        resultIntent.putExtra(MainActivity.STATUS_MESSAGE, "Gotovo");  // put data that you want returned to activity A
+        resultIntent.putExtra(MainActivity.STATUS_MESSAGE, getString(R.string.uspjeh));  // put data that you want returned to activity A
         setResult(Activity.RESULT_OK, resultIntent);
         finish();
     }

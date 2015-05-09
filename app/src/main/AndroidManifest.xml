@@ -25,5 +25,5 @@
             android:label="@string/title_activity_izmjena_obilaska" >
         </activity>
     </application>
-
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 </manifest>

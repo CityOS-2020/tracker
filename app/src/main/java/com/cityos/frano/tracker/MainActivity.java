@@ -62,24 +62,24 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void btnPregledObilazakaClick(View view) {
-        prikazPoruka("Prikaz Obilazaka");
+        prikazPoruka("@string/otvori_obilaske");
     }
 
     public void btnIzmjeniObilazakClick(View view) {
         Intent intentUnos = new Intent(this, IzmjenaObilaska.class);
-        intentUnos.putExtra(EXTRA_MESSAGE, "Izmjena unosa");
+        intentUnos.putExtra(EXTRA_MESSAGE, getString(R.string.izmjena_obilazak));
         startActivityForResult(intentUnos, REQUEST_IZMJENA);
     }
 
     public void btnUnesiObilazakClick(View view) {
 
         Intent intentUnos = new Intent(this, UnosObilaskaActivity.class);
-        intentUnos.putExtra(EXTRA_MESSAGE, "Novi unos");
+        intentUnos.putExtra(EXTRA_MESSAGE, getString(R.string.unos_obilazak));
         startActivityForResult(intentUnos, REQUEST_UNOS);
     }
 
     public void btnIzbrisiObilazakClick(View view) {
-        prikazPoruka("Brisanje Obilazaka");
+        prikazPoruka(getString(R.string.izbrisi_obilazak));
     }
 
 
@@ -88,7 +88,7 @@ public class MainActivity extends ActionBarActivity {
         switch(requestCode) {
             case REQUEST_UNOS:
                 if (resultCode == Activity.RESULT_OK) {
-                    prikazPoruka("Novi unos : " + data.getStringExtra(STATUS_MESSAGE));
+                    prikazPoruka(getString(R.string.unos_obilazak) + " : " + data.getStringExtra(STATUS_MESSAGE));
                 }
 
                 break;
@@ -97,7 +97,7 @@ public class MainActivity extends ActionBarActivity {
                 break;
             case REQUEST_IZMJENA:
                 if (resultCode == Activity.RESULT_OK) {
-                    prikazPoruka("Izmjena unosa : " + data.getStringExtra(STATUS_MESSAGE));
+                    prikazPoruka(getString(R.string.izmjena_obilazak) + " : " + data.getStringExtra(STATUS_MESSAGE));
                 }
                 break;
             case REQUEST_BRISANJE:

@@ -9,6 +9,13 @@
     <string name="title_activity_unos_obilaska">UnosObilaskaActivity</string>
     <string name="save">Spremi Podatke</string>
     <string name="cancel">Odustani</string>
+    <string name="vrijeme">Vrijeme</string>
+    <string name="longitude">Longitude</string>
+    <string name="latitude">Latitude</string>
+    <string name="opis">Opis</string>
+    <string name="hint_opis">Unesi opis...</string>
+    <string name="uspjeh">Gotovo</string>
+    <string name="error">Puklo</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_izmjena_obilaska">IzmjenaObilaska</string>
 </resources>

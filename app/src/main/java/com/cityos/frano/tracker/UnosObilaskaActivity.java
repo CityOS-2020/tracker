@@ -2,6 +2,7 @@ package com.cityos.frano.tracker;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.location.Location;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,9 +14,18 @@ import java.text.DateFormat;
 import java.util.Date;
 import com.cityos.frano.tracker.ObilazakPoint;
 
-public class UnosObilaskaActivity extends ActionBarActivity {
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
+
+public class UnosObilaskaActivity
+        extends ActionBarActivity
+        implements GoogleApiClient.ConnectionCallbacks,
+                    GoogleApiClient.OnConnectionFailedListener{
 
     private ObilazakPoint m_op;
+    private GoogleApiClient mGoogleApiClient;
+    private Location mLastLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,13 +38,13 @@ public class UnosObilaskaActivity extends ActionBarActivity {
         Date date = new Date();
         DateFormat dateFormat = DateFormat.getDateTimeInstance();
         m_op = new ObilazakPoint(dateFormat.format(date), "0.000000", "0.000000", message, "");
+        buildGoogleApiClient();
+        mGoogleApiClient.connect();
 
         TextView tv = (TextView)findViewById(R.id.textUnosVrijeme);
         tv.setText(m_op.getVrijeme());
-        tv = (TextView)findViewById(R.id.textUnosLongitude);
-        tv.setText("Longitude : " + m_op.getLongitude());
-        tv = (TextView)findViewById(R.id.textUnosLatitude);
-        tv.setText("Latitude : " + m_op.getLatitude());
+
+        napuniKoordinate();
 
     }
 
@@ -67,8 +77,44 @@ public class UnosObilaskaActivity extends ActionBarActivity {
         m_op.Spremi("CityOs.ser", getApplicationContext());
 
         Intent resultIntent = new Intent();
-        resultIntent.putExtra(MainActivity.STATUS_MESSAGE, "Gotovo");  // put data that you want returned to activity A
+        resultIntent.putExtra(MainActivity.STATUS_MESSAGE, getString(R.string.uspjeh));  // put data that you want returned to activity A
         setResult(Activity.RESULT_OK, resultIntent);
         finish();
+    }
+
+    protected synchronized void buildGoogleApiClient() {
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(LocationServices.API)
+                .build();
+    }
+
+    @Override
+    public void onConnected(Bundle bundle) {
+        mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
+        if (mLastLocation != null) {
+            m_op.setLatitude(String.valueOf(mLastLocation.getLatitude()));
+            m_op.setLongitude(String.valueOf(mLastLocation.getLongitude()));
+        }
+
+        napuniKoordinate();
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+
+    }
+
+    public void napuniKoordinate(){
+        TextView tv = (TextView)findViewById(R.id.textUnosLongitude);
+        tv.setText(getString(R.string.longitude) + ": " + m_op.getLongitude());
+        tv = (TextView)findViewById(R.id.textUnosLatitude);
+        tv.setText(getString(R.string.latitude) + ": " + m_op.getLatitude());
     }
 }

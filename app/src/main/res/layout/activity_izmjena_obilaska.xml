@@ -47,7 +47,7 @@
             android:editable="true"
             android:maxLines="4"
             android:inputType="textImeMultiLine|text"
-            android:hint="Prikaz opisa" />
+            android:hint="@string/hint_opis" />
 
         <Button
             android:layout_width="match_parent"
