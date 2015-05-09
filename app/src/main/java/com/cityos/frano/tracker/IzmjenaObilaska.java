@@ -9,39 +9,34 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import java.text.DateFormat;
-import java.util.Date;
-import com.cityos.frano.tracker.ObilazakPoint;
 
-public class UnosObilaskaActivity extends ActionBarActivity {
+public class IzmjenaObilaska extends ActionBarActivity {
 
     private ObilazakPoint m_op;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_unos_obilaska);
+        setContentView(R.layout.activity_izmjena_obilaska);
 
-        Intent intent = getIntent();
-        String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+        m_op = new ObilazakPoint("", "0.000000", "0.000000", "", "");
+        m_op.Ucitaj("CityOs.ser", getApplicationContext());
 
-        Date date = new Date();
-        DateFormat dateFormat = DateFormat.getDateTimeInstance();
-        m_op = new ObilazakPoint(dateFormat.format(date), "0.000000", "0.000000", message, "");
-
-        TextView tv = (TextView)findViewById(R.id.textUnosVrijeme);
+        TextView tv = (TextView)findViewById(R.id.textIzmjenaVrijeme);
         tv.setText(m_op.getVrijeme());
-        tv = (TextView)findViewById(R.id.textUnosLongitude);
+        tv = (TextView)findViewById(R.id.textIzmjenaLongitude);
         tv.setText("Longitude : " + m_op.getLongitude());
-        tv = (TextView)findViewById(R.id.textUnosLatitude);
+        tv = (TextView)findViewById(R.id.textIzmjenaLatitude);
         tv.setText("Latitude : " + m_op.getLatitude());
+        tv = (TextView)findViewById(R.id.textIzmjenaOpis);
+        tv.setText("Opis : " + m_op.getOpis());
 
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_unos_obilaska, menu);
+        getMenuInflater().inflate(R.menu.menu_izmjena_obilaska, menu);
         return true;
     }
 
@@ -62,7 +57,7 @@ public class UnosObilaskaActivity extends ActionBarActivity {
 
     public void btnSpremiPodatke(View view){
 
-        TextView tv = (TextView)findViewById(R.id.textUnosOpis);
+        TextView tv = (TextView)findViewById(R.id.textIzmjenaOpis);
         m_op.setOpis(tv.getText().toString());
         m_op.Spremi("CityOs.ser", getApplicationContext());
 

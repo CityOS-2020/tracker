@@ -66,7 +66,9 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void btnIzmjeniObilazakClick(View view) {
-        prikazPoruka("Izmjena Obilazaka");
+        Intent intentUnos = new Intent(this, IzmjenaObilaska.class);
+        intentUnos.putExtra(EXTRA_MESSAGE, "Izmjena unosa");
+        startActivityForResult(intentUnos, REQUEST_IZMJENA);
     }
 
     public void btnUnesiObilazakClick(View view) {
@@ -94,7 +96,9 @@ public class MainActivity extends ActionBarActivity {
 
                 break;
             case REQUEST_IZMJENA:
-
+                if (resultCode == Activity.RESULT_OK) {
+                    prikazPoruka("Izmjena unosa : " + data.getStringExtra(STATUS_MESSAGE));
+                }
                 break;
             case REQUEST_BRISANJE:
 

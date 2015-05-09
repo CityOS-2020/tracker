@@ -20,6 +20,10 @@
             android:name=".UnosObilaskaActivity"
             android:label="@string/title_activity_unos_obilaska" >
         </activity>
+        <activity
+            android:name=".IzmjenaObilaska"
+            android:label="@string/title_activity_izmjena_obilaska" >
+        </activity>
     </application>
 
 </manifest>
