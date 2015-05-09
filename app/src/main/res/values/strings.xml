@@ -6,7 +6,7 @@
     <string name="izbrisi_obilazak">Izbriši obilazak</string>
     <string name="obilasci">Obilasci</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_unos_obilaska">UnosObilaskaActivity</string>
+    <string name="title_activity_unos_obilaska">Unos Obilaska</string>
     <string name="save">Spremi Podatke</string>
     <string name="cancel">Odustani</string>
     <string name="vrijeme">Vrijeme</string>
@@ -17,5 +17,6 @@
     <string name="uspjeh">Gotovo</string>
     <string name="error">Puklo</string>
     <string name="hello_world">Hello world!</string>
-    <string name="title_activity_izmjena_obilaska">IzmjenaObilaska</string>
+    <string name="title_activity_izmjena_obilaska">Izmjena Obilaska</string>
+    <string name="title_activity_prikaz_obilazaka">Prikaz Obilazaka</string>
 </resources>

@@ -62,13 +62,15 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void btnPregledObilazakaClick(View view) {
-        prikazPoruka("@string/otvori_obilaske");
+        Intent intentLista = new Intent(this, PrikazObilazaka.class);
+        intentLista.putExtra(EXTRA_MESSAGE, getString(R.string.otvori_obilaske));
+        startActivityForResult(intentLista, REQUEST_PRIKAZ);
     }
 
     public void btnIzmjeniObilazakClick(View view) {
-        Intent intentUnos = new Intent(this, IzmjenaObilaska.class);
-        intentUnos.putExtra(EXTRA_MESSAGE, getString(R.string.izmjena_obilazak));
-        startActivityForResult(intentUnos, REQUEST_IZMJENA);
+        Intent intentIzmjena = new Intent(this, IzmjenaObilaska.class);
+        intentIzmjena.putExtra(EXTRA_MESSAGE, getString(R.string.izmjena_obilazak));
+        startActivityForResult(intentIzmjena, REQUEST_IZMJENA);
     }
 
     public void btnUnesiObilazakClick(View view) {
@@ -93,7 +95,9 @@ public class MainActivity extends ActionBarActivity {
 
                 break;
             case REQUEST_PRIKAZ:
-
+                if (resultCode == Activity.RESULT_OK) {
+                    prikazPoruka(getString(R.string.otvori_obilaske) + " : " + data.getStringExtra(STATUS_MESSAGE));
+                }
                 break;
             case REQUEST_IZMJENA:
                 if (resultCode == Activity.RESULT_OK) {

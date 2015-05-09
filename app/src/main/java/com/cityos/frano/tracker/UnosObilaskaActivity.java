@@ -74,7 +74,9 @@ public class UnosObilaskaActivity
 
         TextView tv = (TextView)findViewById(R.id.textUnosOpis);
         m_op.setOpis(tv.getText().toString());
+        String imeDatoteke = imeDatoteke();
         m_op.Spremi("CityOs.ser", getApplicationContext());
+        m_op.Spremi(imeDatoteke, getApplicationContext());
 
         Intent resultIntent = new Intent();
         resultIntent.putExtra(MainActivity.STATUS_MESSAGE, getString(R.string.uspjeh));  // put data that you want returned to activity A
@@ -116,5 +118,13 @@ public class UnosObilaskaActivity
         tv.setText(getString(R.string.longitude) + ": " + m_op.getLongitude());
         tv = (TextView)findViewById(R.id.textUnosLatitude);
         tv.setText(getString(R.string.latitude) + ": " + m_op.getLatitude());
+    }
+
+    public String imeDatoteke(){
+        String datoteka = m_op.getVrijeme();
+        datoteka = datoteka.replaceAll(" ", "");
+        datoteka = datoteka.replaceAll(".", "");
+        datoteka = datoteka.replaceAll(":", "");
+        return datoteka + ".koo";
     }
 }

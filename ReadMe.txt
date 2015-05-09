@@ -7,6 +7,8 @@ Tracker V. 0.1
             Skidanje koordinata
             Uèitavanje string konstanti u porukama iz strings.xml
             Izmjena opisa na unosu
+            Datoteke sa imenom od vremena
+            Prikaz liste sa imenima datoteka
 
 08.05.2015: Kreiran Repository tracker https://github.com/cityos/tracker
             Glavni ekran sa botunima i On Click funkcijama
