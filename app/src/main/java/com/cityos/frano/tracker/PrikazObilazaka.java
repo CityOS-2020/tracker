@@ -58,6 +58,10 @@ public class PrikazObilazaka extends ListActivity {
 
     public void onListItemClick(ListView parent, View v,int position, long id){
         Toast.makeText(this, popisDatoteka[position], Toast.LENGTH_SHORT).show();
+
+        Intent mapIntent = new Intent(this, MapPointActivity.class);
+        startActivity(mapIntent);
+
         Intent resultIntent = new Intent();
         resultIntent.putExtra(MainActivity.STATUS_MESSAGE, getString(R.string.uspjeh));  // put data that you want returned to activity A
         setResult(Activity.RESULT_OK, resultIntent);

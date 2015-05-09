@@ -19,4 +19,5 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_izmjena_obilaska">Izmjena Obilaska</string>
     <string name="title_activity_prikaz_obilazaka">Prikaz Obilazaka</string>
+    <string name="title_activity_map_point">MapPointActivity</string>
 </resources>
