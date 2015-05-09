@@ -10,6 +10,7 @@ Tracker V. 0.1
             Datoteke sa imenom od vremena
             Prikaz liste sa imenima datoteka
             Mapa sa prikazanim koordinatama
+            Prikaz mape sa koordinatama iz datoteke
 
 08.05.2015: Kreiran Repository tracker https://github.com/cityos/tracker
             Glavni ekran sa botunima i On Click funkcijama

@@ -60,6 +60,7 @@ public class PrikazObilazaka extends ListActivity {
         Toast.makeText(this, popisDatoteka[position], Toast.LENGTH_SHORT).show();
 
         Intent mapIntent = new Intent(this, MapPointActivity.class);
+        mapIntent.putExtra("ImeDatoteke", popisDatoteka[position]);
         startActivity(mapIntent);
 
         Intent resultIntent = new Intent();
