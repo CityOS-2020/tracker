@@ -6,6 +6,7 @@ Tracker V. 0.1
             Activity za izmjenu toèke obilaska
             Skidanje koordinata
             Uèitavanje string konstanti u porukama iz strings.xml
+            Izmjena opisa na unosu
 
 08.05.2015: Kreiran Repository tracker https://github.com/cityos/tracker
             Glavni ekran sa botunima i On Click funkcijama
