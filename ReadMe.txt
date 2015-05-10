@@ -4,6 +4,8 @@ Tracker V. 0.1
             Fino pozicioniranje, aplicirano ali ne radi kako treba. Stoji iskljuèeno.
             Brisanje datoteka.
             Prava izmjena datoteka.
+            Sreðivanje pozicije i izgleda mape.
+            Ispravci bugova prilikom prezentacije.
 
 09.05.2015: Activity za unos toèke obilaska
             Activity obrada rezultata
