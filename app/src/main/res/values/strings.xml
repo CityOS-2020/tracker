@@ -19,5 +19,9 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_izmjena_obilaska">Izmjena Obilaska</string>
     <string name="title_activity_prikaz_obilazaka">Prikaz Obilazaka</string>
-    <string name="title_activity_map_point">MapPointActivity</string>
+    <string name="title_activity_map_point">Map Point Aktivnost</string>
+    <string name="service_not_available">Servis dohvata adresa nedostupan</string>
+    <string name="no_address_found">Nije pronađena adresa</string>
+    <string name="address_found">Pronađena adresa</string>
+    <string name="invalid_lat_long_used">Korištene su neispravne koordinate</string>
 </resources>

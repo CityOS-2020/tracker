@@ -1,5 +1,7 @@
 Tracker V. 0.1
 
+10.05.2015: Prikaz adrese lokacije
+
 09.05.2015: Activity za unos toèke obilaska
             Activity obrada rezultata
             Class ObilazakPoint serijaliziran

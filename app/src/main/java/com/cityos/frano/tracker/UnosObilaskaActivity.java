@@ -3,16 +3,20 @@ package com.cityos.frano.tracker;
 import android.app.Activity;
 import android.content.Intent;
 import android.location.Location;
+import android.os.Handler;
+import android.os.ResultReceiver;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.util.Date;
 import com.cityos.frano.tracker.ObilazakPoint;
+import com.cityos.frano.tracker.Constants;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -23,9 +27,53 @@ public class UnosObilaskaActivity
         implements GoogleApiClient.ConnectionCallbacks,
                     GoogleApiClient.OnConnectionFailedListener{
 
+
+    class AddressResultReceiver extends ResultReceiver {
+
+        private String mAddressOutput;
+        private UnosObilaskaActivity mReceiver;
+
+        public AddressResultReceiver(Handler handler) {
+            super(handler);
+        }
+
+        @Override
+        protected void onReceiveResult(int resultCode, Bundle resultData) {
+
+            // Display the address string
+            // or an error message sent from the intent service.
+            mAddressOutput = resultData.getString(Constants.RESULT_DATA_KEY);
+            mReceiver.displayAddressOutput(mAddressOutput);
+
+            // Show a toast message if an address was found.
+            /*
+            if (resultCode == Constants.SUCCESS_RESULT) {
+
+                Toast.makeText(getApplicationContext(), getString(R.string.address_found), Toast.LENGTH_SHORT).show();
+                // showToast(getString(R.string.address_found));
+            }
+            */
+        }
+
+        public void setReceiver(UnosObilaskaActivity receiver) {
+            mReceiver = receiver;
+        }
+
+        public String getAddress(){
+            return mAddressOutput;
+        }
+    }
+
+    private void displayAddressOutput(String adresa) {
+        TextView tv = (TextView)findViewById(R.id.textUnosOpis);
+        tv.setText(adresa + ": " + tv.getText().toString());
+
+    }
+
     private ObilazakPoint m_op;
     private GoogleApiClient mGoogleApiClient;
     private Location mLastLocation;
+    private AddressResultReceiver mResultReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +94,17 @@ public class UnosObilaskaActivity
 
         napuniKoordinate();
 
+    }
+
+    protected void startIntentService() {
+
+        mResultReceiver = new AddressResultReceiver(new Handler());
+        mResultReceiver.setReceiver(this);
+
+        Intent intent = new Intent(this, AddressIntentService.class);
+        intent.putExtra(Constants.RECEIVER, mResultReceiver);
+        intent.putExtra(Constants.LOCATION_DATA_EXTRA, mLastLocation);
+        startService(intent);
     }
 
     @Override
@@ -101,6 +160,10 @@ public class UnosObilaskaActivity
         }
 
         napuniKoordinate();
+
+        if (mGoogleApiClient.isConnected() && mLastLocation != null) {
+            startIntentService();
+        }
     }
 
     @Override
