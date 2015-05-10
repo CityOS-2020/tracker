@@ -85,7 +85,7 @@ public class MapPointActivity extends FragmentActivity
                                                         new LatLng(Double.parseDouble(m_op.getLatitude()) + 10.0,
                                                                     Double.parseDouble(m_op.getLongitude()) + 10.0));
 
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(OBILAZAK_POINT.getCenter(), 10));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(OBILAZAK_POINT.getCenter(), googleMap.getMaxZoomLevel() - 4));
         Toast.makeText(this, m_op.getOpis(), Toast.LENGTH_SHORT).show();
     }
 
