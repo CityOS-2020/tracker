@@ -1,6 +1,8 @@
 Tracker V. 0.1
 
 10.05.2015: Prikaz adrese lokacije
+            Fino pozicioniranje, aplicirano aline radi kako treba. Stoji iskljuèeno.
+            
 
 09.05.2015: Activity za unos toèke obilaska
             Activity obrada rezultata
