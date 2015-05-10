@@ -6,6 +6,7 @@ Tracker V. 0.1
             Prava izmjena datoteka.
             Sreðivanje pozicije i izgleda mape.
             Ispravci bugova prilikom prezentacije.
+            Prebaèene funkcije za fotografiranje.
 
 09.05.2015: Activity za unos toèke obilaska
             Activity obrada rezultata
