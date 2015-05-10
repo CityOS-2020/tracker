@@ -13,6 +13,7 @@ import android.widget.TextView;
 public class IzmjenaObilaska extends ActionBarActivity {
 
     private ObilazakPoint m_op;
+    private String ImeDatoteke;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +21,10 @@ public class IzmjenaObilaska extends ActionBarActivity {
         setContentView(R.layout.activity_izmjena_obilaska);
 
         m_op = new ObilazakPoint("", "0.000000", "0.000000", "", "");
-        m_op.Ucitaj("CityOs.ser", getApplicationContext());
+
+        ImeDatoteke = getIntent().getStringExtra("ImeDatoteke");
+        if (ImeDatoteke.length() == 0) {ImeDatoteke = "CityOs.ser";}
+        m_op.Ucitaj(ImeDatoteke, getApplicationContext());
 
         TextView tv = (TextView)findViewById(R.id.textIzmjenaVrijeme);
         tv.setText(m_op.getVrijeme());
@@ -59,7 +63,7 @@ public class IzmjenaObilaska extends ActionBarActivity {
 
         TextView tv = (TextView)findViewById(R.id.textIzmjenaOpis);
         m_op.setOpis(tv.getText().toString());
-        m_op.Spremi("CityOs.ser", getApplicationContext());
+        m_op.Spremi(ImeDatoteke, getApplicationContext());
 
         Intent resultIntent = new Intent();
         resultIntent.putExtra(MainActivity.STATUS_MESSAGE, getString(R.string.uspjeh));  // put data that you want returned to activity A

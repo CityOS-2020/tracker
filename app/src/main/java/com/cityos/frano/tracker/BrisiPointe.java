@@ -20,12 +20,14 @@ import java.util.List;
 public class BrisiPointe extends ListActivity {
 
     List<String> popisDatoteka = new ArrayList<String>();
-
+    private boolean mBrisanje;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // setContentView(R.layout.activity_brisi_pointe);
+        String datoteka = getIntent().getStringExtra(MainActivity.EXTRA_MESSAGE);
+        if (datoteka.equalsIgnoreCase(getString(R.string.izmjena_obilazak))) {mBrisanje = false;} else {mBrisanje = true;};
 
         ListView lstView = getListView();
         lstView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
@@ -65,10 +67,20 @@ public class BrisiPointe extends ListActivity {
     }
 
     public void onListItemClick(ListView parent, View v,int position, long id){
-        Toast.makeText(this, "Brisanje: " + popisDatoteka.get(position), Toast.LENGTH_SHORT).show();
+        if (mBrisanje) {
 
-        File dir = getFilesDir();
-        deleteFile(popisDatoteka.get(position));
+            Toast.makeText(this, "Brisanje: " + popisDatoteka.get(position), Toast.LENGTH_SHORT).show();
+
+            File dir = getFilesDir();
+            deleteFile(popisDatoteka.get(position));
+        } else {
+
+            Intent intentIzmjena = new Intent(this, IzmjenaObilaska.class);
+            intentIzmjena.putExtra(MainActivity.EXTRA_MESSAGE, getString(R.string.izmjena_obilazak));
+            intentIzmjena.putExtra("ImeDatoteke", popisDatoteka.get(position));
+            startActivity(intentIzmjena);
+
+        }
 
         osvjeziListu();
 

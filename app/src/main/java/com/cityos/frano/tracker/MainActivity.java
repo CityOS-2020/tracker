@@ -68,9 +68,9 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void btnIzmjeniObilazakClick(View view) {
-        Intent intentIzmjena = new Intent(this, IzmjenaObilaska.class);
-        intentIzmjena.putExtra(EXTRA_MESSAGE, getString(R.string.izmjena_obilazak));
-        startActivityForResult(intentIzmjena, REQUEST_IZMJENA);
+        Intent intentLista = new Intent(this, BrisiPointe.class);
+        intentLista.putExtra(EXTRA_MESSAGE, getString(R.string.izmjena_obilazak));
+        startActivityForResult(intentLista, REQUEST_IZMJENA);
     }
 
     public void btnUnesiObilazakClick(View view) {
