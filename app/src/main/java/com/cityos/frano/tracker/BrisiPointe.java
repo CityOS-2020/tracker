@@ -17,14 +17,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class PrikazObilazaka extends ListActivity {
+public class BrisiPointe extends ListActivity {
 
     List<String> popisDatoteka = new ArrayList<String>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_prikaz_obilazaka);
+        // setContentView(R.layout.activity_brisi_pointe);
 
         ListView lstView = getListView();
         lstView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
@@ -39,13 +40,12 @@ public class PrikazObilazaka extends ListActivity {
         }
 
         setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_checked, popisDatoteka));
-
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_prikaz_obilazaka, menu);
+        getMenuInflater().inflate(R.menu.menu_brisi_pointe, menu);
         return true;
     }
 
@@ -65,17 +65,27 @@ public class PrikazObilazaka extends ListActivity {
     }
 
     public void onListItemClick(ListView parent, View v,int position, long id){
-        Toast.makeText(this, popisDatoteka.get(position), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Brisanje: " + popisDatoteka.get(position), Toast.LENGTH_SHORT).show();
 
-        Intent mapIntent = new Intent(this, MapPointActivity.class);
-        mapIntent.putExtra("ImeDatoteke", popisDatoteka.get(position));
-        startActivity(mapIntent);
-/*
-        Intent resultIntent = new Intent();
-        resultIntent.putExtra(MainActivity.STATUS_MESSAGE, getString(R.string.uspjeh));  // put data that you want returned to activity A
-        setResult(Activity.RESULT_OK, resultIntent);
-        finish();
-*/
+        File dir = getFilesDir();
+        deleteFile(popisDatoteka.get(position));
+
+        osvjeziListu();
+
     }
 
+    private void osvjeziListu() {
+        File intStorage = getFilesDir();
+        String[] popis = fileList();
+
+        popisDatoteka.clear();
+
+        for(int i=0; i< popis.length; i++)
+        {
+            if (popis[i].endsWith(".koo")) // Condition to check .jpg file extension
+                popisDatoteka.add(popis[i]);
+        }
+
+        setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_checked, popisDatoteka));
+    }
 }

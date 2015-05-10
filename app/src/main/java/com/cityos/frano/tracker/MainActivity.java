@@ -81,7 +81,9 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void btnIzbrisiObilazakClick(View view) {
-        prikazPoruka(getString(R.string.izbrisi_obilazak));
+        Intent intentLista = new Intent(this, BrisiPointe.class);
+        intentLista.putExtra(EXTRA_MESSAGE, getString(R.string.izbrisi_obilazak));
+        startActivityForResult(intentLista, REQUEST_BRISANJE);
     }
 
 

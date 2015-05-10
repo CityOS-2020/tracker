@@ -24,4 +24,5 @@
     <string name="no_address_found">Nije pronađena adresa</string>
     <string name="address_found">Pronađena adresa</string>
     <string name="invalid_lat_long_used">Korištene su neispravne koordinate</string>
+    <string name="title_activity_brisi_pointe">BrisiPointe</string>
 </resources>

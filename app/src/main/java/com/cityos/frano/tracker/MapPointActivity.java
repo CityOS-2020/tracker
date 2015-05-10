@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -77,7 +78,7 @@ public class MapPointActivity extends FragmentActivity
     public void onMapReady(GoogleMap googleMap) {
         googleMap.addMarker(new MarkerOptions()
                 .position(new LatLng(Double.parseDouble(m_op.getLatitude()), Double.parseDouble(m_op.getLongitude())))
-                .title("Test ime markera"));
+                .title(m_op.getOpis()));
 
         LatLngBounds OBILAZAK_POINT = new LatLngBounds(new LatLng(Double.parseDouble(m_op.getLatitude()) - 10.0,
                                                                     Double.parseDouble(m_op.getLongitude()) - 10.0),
@@ -85,6 +86,7 @@ public class MapPointActivity extends FragmentActivity
                                                                     Double.parseDouble(m_op.getLongitude()) + 10.0));
 
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(OBILAZAK_POINT.getCenter(), 10));
+        Toast.makeText(this, m_op.getOpis(), Toast.LENGTH_SHORT).show();
     }
 
 
